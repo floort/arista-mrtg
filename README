@@ -1,0 +1,10 @@
+Run MRTG on an Arista:
+
+run ./mrtg_install.sh as root to install all the dependencies
+Make sure SNMP is runnig correctly
+Run the following command to create MRTG configuration:
+$ ./cfgmaker --global 'WorkDir: /perist/local/mrtg/htdocs/' \
+	--global 'Options[_]: bits,growright' \
+	--output /persist/local/mrtg/mrtg.conf someuser@snmphost
+run lighttpd -f /persist/local/mrtg/lighttpd.conf
+run /mrtg --user=mrtg-user /persist/local//mrtg/mrtg.cfg  --logging /var/log/mrtg.log
